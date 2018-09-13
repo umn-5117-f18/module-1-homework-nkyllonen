@@ -12,3 +12,10 @@ Please fill out all of the following sections to help us grade your submission:
 ## Link to Site
 
 <https://TODO.herokuapp.com/>
+
+## Challenge Task
+
+* I started the challenge task: [yes/no]
+* I completed the challenge task: [yes/no]
+
+(if applicable) link: <https://TODO.herokuapp.com/admin/summary>
