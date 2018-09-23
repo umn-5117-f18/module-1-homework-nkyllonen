@@ -7,7 +7,7 @@ Please fill out all of the following sections to help us grade your submission:
 
 ## Student (to be completed individually)
 
-* First Last, x500@umn.edu
+* Nikki Kyllonen, kyllo089@umn.edu
 
 ## Link to Site
 
