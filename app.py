@@ -32,11 +32,11 @@ def survey():
     return render_template("survey.html")
 
 @app.route('/decline')
-def survey():
+def decline():
     return render_template("decline.html")
 
 @app.route('/thanks')
-def survey():
+def thanks():
     return render_template("thanks.html")
 
 @app.route('/people')
