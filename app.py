@@ -24,9 +24,20 @@ def close_db(error):
         g.pg_db.close()
 
 @app.route('/')
-def hello_world():
-    link = url_for("people")
-    return f'Hello World! <a href="{link}">people</a>'
+def index():
+    return render_template("index.html")
+
+@app.route('/survey')
+def survey():
+    return render_template("survey.html")
+
+@app.route('/decline')
+def survey():
+    return render_template("decline.html")
+
+@app.route('/thanks')
+def survey():
+    return render_template("thanks.html")
 
 @app.route('/people')
 def people():
