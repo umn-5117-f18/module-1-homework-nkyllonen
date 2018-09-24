@@ -1,26 +1,10 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block header %}
+  <h1>{% block title %}Nikki's Survey{% endblock %}</h1>
+{% endblock %}
 
-  <title>Nikki's Survey</title>
-
-  <!-- Pure CSS link
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-  -->
-
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-
-  <!-- Pure CSS Marketing CSS stylesheet -->
-  <!-- <link rel="stylesheet" href="css/layouts/marketing.css"> -->
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='marketing.css') }}">
-
-</head>
-
-<body>
-
+{% block content %}
 
 <div class="splash-container">
     <div class="splash">
@@ -35,5 +19,4 @@
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

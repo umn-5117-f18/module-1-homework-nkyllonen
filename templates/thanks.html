@@ -1,22 +1,21 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+{% block header %}
+  <h1>{% block title %}Nikki's Survey{% endblock %}</h1>
+{% endblock %}
 
-  <title>Nikki's Survey</title>
+{% block content %}
 
-  <!-- Pure CSS link -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Thank you for taking my survey!</h1>
+        <p class="splash-subhead">
+            Your results will be entered into my database for safe keeping.
+        </p>
+        <p>
+            <a href="{{ url_for('index') }}" class="pure-button pure-button-primary">Return to Home</a>
+        </p>
+    </div>
+</div>
 
-  <!-- Pure CSS Marketing CSS stylesheet -->
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='marketing.css') }}">
-
-</head>
-
-<body>
-
-	<h1>THANKS.html</h1>
-
-</body>
-</html>
+{% endblock %}
