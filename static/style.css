@@ -1,0 +1,21 @@
+/*
+From this site:
+https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios-buttons-54063e759bb3
+ */
+
+.checkbox label {
+    position: relative;
+}
+.checkbox label::before,
+.checkbox label::after {
+    position: absolute;
+}
+/*Outer-box*/
+.checkbox label::before {
+    top: 3px;
+}
+/*Checkmark*/
+.checkbox label::after {
+    left: 4px;
+    top: 7px;
+}

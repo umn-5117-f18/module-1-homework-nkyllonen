@@ -12,6 +12,51 @@
         <p>
             <a href="{{ url_for('index') }}" class="pure-button pure-button-primary">Return to Home</a>
         </p>
+      </div>
+</div>
+
+<div class = "content-wrapper">
+  <div class="content">
+
+      <form class="pure-form pure-g" method="post" action="/people">
+          <div class="pure-u-1-8">
+
+              <label for="name-input">Name (first last)</label>
+              <input class="pure-input-1" id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
+
+              <label for="color-input">Favorite Color</label>
+              <input class="pure-input-1" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
+
+          </div>
+      </form>
+
+      <form method="post" action="/people">
+      <p><label for="breed-radios">Favorite Dog Breed:</label></p>
+
+          <div class="checkbox">
+          <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
+          <label for="AS" class="pure-radio">
+            Australian Shepherd
+          </label>
+          </div>
+
+          <div class="checkbox">
+          <input type="radio" id="GS" name="breed-radios" value="German Shepherd" />
+          <label for="GS" class="pure-radio">
+            German Shepherd
+          </label>
+          </div>
+
+          <div class="checkbox">
+          <input type="radio" id="GR" name="breed-radios" value="Golden Retriever" />
+          <label for="GR" class="pure-radio">
+            Golden Retriever
+          </label>
+        </div>
+      </form>
+
+      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
+
     </div>
 </div>
 

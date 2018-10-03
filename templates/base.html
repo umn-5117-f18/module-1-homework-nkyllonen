@@ -15,11 +15,13 @@
   <!-- Pure CSS Marketing CSS stylesheet -->
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='marketing.css') }}">
 
+  <!-- My CSS stylesheet -->
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% block content %}{% endblock %}
-</section>
+<header>
+  {% block header %}{% endblock %}
+</header>
+
+{% block content %}{% endblock %}
