@@ -1,4 +1,4 @@
-""" database access - from in-class 9/26
+""" database access - originally from in-class 9/26
 docs:
 * http://initd.org/psycopg/docs/
 * http://initd.org/psycopg/docs/pool.html
@@ -36,6 +36,7 @@ def get_db_connection():
 @contextmanager
 def get_db_cursor(commit=False):
     with get_db_connection() as connection:
+      #DictCursor so we can use (key, value) calls
       cursor = connection.cursor(cursor_factory=DictCursor)
       # cursor = connection.cursor()
       try:

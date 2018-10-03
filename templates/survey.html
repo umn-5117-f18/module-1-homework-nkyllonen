@@ -19,7 +19,8 @@
   <div class="content">
 
       <form class="pure-form pure-g" method="post" action="/people">
-          <div class="pure-u-1-8">
+      <fieldset>
+          <div class="pure-u-1-4">
 
               <label for="name-input">Name (first last)</label>
               <input class="pure-input-1" id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
@@ -27,10 +28,19 @@
               <label for="color-input">Favorite Color</label>
               <input class="pure-input-1" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
 
+              <label for="mood-input">Favorite Mood of Music</label>
+              <select id="mood-input">
+                  <option>dance</option>
+                  <option>chill</option>
+                  <option>happy</option>
+              </select>
+
           </div>
+      </fieldset>
       </form>
 
       <form method="post" action="/people">
+      <!-- <fieldset> -->
       <p><label for="breed-radios">Favorite Dog Breed:</label></p>
 
           <div class="checkbox">
@@ -53,10 +63,10 @@
             Golden Retriever
           </label>
         </div>
+      <!-- </fieldset> -->
       </form>
 
-      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
-
+      <a href="{{ url_for('thanks') }}" class="pure-button">Submit Survey</a>
     </div>
 </div>
 

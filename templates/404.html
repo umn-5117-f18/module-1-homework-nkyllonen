@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}404 Not Found{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">404! Page not found!</h1>
+        <p class="splash-subhead">
+            Sorry, that page does not exist.
+        </p>
+        <p>
+            <a href="{{ url_for('index') }}" class="pure-button pure-button-primary">Return to Home</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
