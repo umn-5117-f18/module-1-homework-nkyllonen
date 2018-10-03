@@ -46,17 +46,17 @@ def people():
 
         return render_template("people.html", names=names)
 
-@app.route('/api/results')
-def results():
-    data = {
-        "message": "hello, world",
-        "isAGoodExample": False,
-        "aList": [1, 2, 3],
-        "nested": {
-            "key": "value"
-        }
-    }
-    return jsonify(data)
+# @app.route('/api/results')
+# def results():
+#     data = {
+#         "message": "hello, world",
+#         "isAGoodExample": False,
+#         "aList": [1, 2, 3],
+#         "nested": {
+#             "key": "value"
+#         }
+#     }
+#     return jsonify(data)
 
 if __name__ == '__main__':
     app.run()

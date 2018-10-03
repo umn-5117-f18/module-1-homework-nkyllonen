@@ -20,9 +20,10 @@ pool = None
 def setup():
     global pool
     DATABASE_URL = os.environ['DATABASE_URL']
+    current_app.logger.info(DATABASE_URL)
     current_app.logger.info(f"creating db connection pool")
     pool = ThreadedConnectionPool(1, 4, dsn=DATABASE_URL, sslmode='require')
-
+    current_app.logger.info(f"finished creading pool")
 
 @contextmanager
 def get_db_connection():
