@@ -19,3 +19,42 @@ https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios
     left: 4px;
     top: 7px;
 }
+
+/*----------------------------------------------------------*/
+/* same as pure-form.label */
+.mylabel {
+    margin: 1em 0 0;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.field-box {
+  width = 25%;
+  padding: 0.5em;
+  position: relative;
+}
+
+.conditional {
+  display: none;
+}
+
+.conditional-checkbox:checked + .conditional {
+  display: block;
+}
+
+.conditional_form_part {
+    display: none;
+}
+
+.conditional_form_part_activator:checked + .conditional_form_part {
+  display: block;
+}
+
+label + textarea {
+    padding: 1em;
+    opacity: 0.1;
+    transition: 0.5s;
+}
+:checked + label + textarea {
+    opacity: 1;
+}

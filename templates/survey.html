@@ -33,6 +33,8 @@
                   <option>dance</option>
                   <option>chill</option>
                   <option>happy</option>
+                  <option>slow</option>
+                  <option>sad</option>
               </select>
 
           </div>
@@ -41,8 +43,8 @@
       </form>
 
       <form method="post" action="/people">
-      <!-- <fieldset> -->
-      <p><label for="breed-radios">Favorite Dog Breed:</label></p>
+      <div class="field-box">
+      <p><label class="mylabel" for="breed-radios">Favorite Dog Breed:</label></p>
 
           <div class="checkbox">
           <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
@@ -64,8 +66,31 @@
             Golden Retriever
           </label>
           </div>
-      <!-- </fieldset> -->
+      </div>
+
+        <div class="field-box">
+          <div class="checkbox">
+          <input type="checkbox" id="terms" name="term-checkbox" value="terms" required/>
+          <label for="terms" class="pure-checkbox">
+            I understand that there are no terms and conditions to this survey.
+            <p></p>
+          </label>
+          <textarea placeholder="Enter a few of your own terms and conditions!"></textarea>
+          </div>
+        </div>
+
       </form>
+
+      <!-- <form>
+        <div class="field-box">
+        <input class="conditional_form_part_activator" type="checkbox" id="terms" name="term-checkbox" value="terms" required>
+          I understand that there are no terms and conditions to this survey.
+
+        <div class="conditional_form_part">
+            <textarea class="pure-input-1-2" placeholder="Enter a few of your own terms and conditions"></textarea>
+        </div>
+        </div>
+      </form> -->
 
       <a href="{{ url_for('thanks') }}" class="pure-button">Submit Survey</a>
     </div>
