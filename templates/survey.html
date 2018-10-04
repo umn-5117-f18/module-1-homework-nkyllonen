@@ -29,17 +29,21 @@
               <input class="pure-input-1" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
 
               <label for="mood-input">Favorite Mood of Music</label>
-              <select id="mood-input">
-                  <option>dance</option>
-                  <option>chill</option>
-                  <option>happy</option>
-                  <option>slow</option>
-                  <option>sad</option>
+              <select id="mood-input" name="mood">
+                  <option name="mood">dance</option>
+                  <option name="mood">happy</option>
+                  <option name="mood">slow</option>
+                  <option name="mood">sad</option>
+                  <option name="mood">warm</option>
               </select>
 
           </div>
 
       </fieldset>
+
+      <!-- needs to be within the <form> section -->
+      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
+
       </form>
 
       <form method="post" action="/people">
@@ -92,7 +96,10 @@
         </div>
       </form> -->
 
-      <a href="{{ url_for('thanks') }}" class="pure-button">Submit Survey</a>
+      <!-- <a href="{{ url_for('thanks') }}" type="submit" class="pure-button">Submit Survey</a> -->
+      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
+
+
     </div>
 </div>
 

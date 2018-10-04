@@ -34,7 +34,12 @@ https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios
   position: relative;
 }
 
-.conditional {
+/*----------------------------------------------------------*/
+/*
+Inspired by:
+https://content.pivotal.io/blog/showing-and-hiding-conditional-html-without-javascript
+ */
+/* .conditional {
   display: none;
 }
 
@@ -48,7 +53,8 @@ https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios
 
 .conditional_form_part_activator:checked + .conditional_form_part {
   display: block;
-}
+} */
+/*----------------------------------------------------------*/
 
 label + textarea {
     padding: 1em;

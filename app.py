@@ -33,18 +33,23 @@ def thanks():
 
 @app.route('/people', methods=['GET', 'POST'])
 def people():
+    app.logger.info(f"called people function")
     if request.method == 'POST':
         name = request.form['name']
         app.logger.info(f"got a name: {name}")
+        color = request.form['color']
+        app.logger.info(f"got a color: {color}")
+        mood = request.form['mood']
+        app.logger.info(f"got a mood: {mood}")
         with db.get_db_cursor(commit=True) as cur:
-            cur.execute("insert into person (name) values (%s)", (name,))
-        return redirect(url_for("people"))
+            cur.execute("insert into person (name, color, mood) values (%s,%s,%s)", (name, color, mood))
+        return render_template("thanks.html")
     else:
         with db.get_db_cursor() as cur:
             cur.execute("SELECT * FROM person;")
             names = [record["name"] for record in cur]
 
-        return render_template("people.html", names=names)
+        return render_template("thanks.html")
 
 # @app.route('/api/results')
 # def results():
