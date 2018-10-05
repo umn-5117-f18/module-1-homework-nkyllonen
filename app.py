@@ -1,7 +1,9 @@
 import os
 
 from flask import Flask, jsonify, redirect, render_template, request, url_for
+
 import psycopg2
+from datetime import datetime
 
 import db
 
@@ -51,7 +53,9 @@ def people():
         app.logger.info(f"got a terms: {terms}")
 
         with db.get_db_cursor(commit=True) as cur:
-            cur.execute("insert into person (name, color, music, breed, terms) values (%s,%s,%s,%s,%s)", (name, color, music, breed, terms))
+            dt = datetime.now()
+            cur.execute("INSERT INTO person (name, color, music, breed, terms, time_stamp) VALUES (%s,%s,%s,%s,%s,%s)", (name, color, music, breed, terms, dt))
+
         return render_template("thanks.html")
     else:
         with db.get_db_cursor() as cur:
@@ -60,17 +64,22 @@ def people():
 
         return render_template("thanks.html")
 
-# @app.route('/api/results')
-# def results():
-#     data = {
-#         "message": "hello, world",
-#         "isAGoodExample": False,
-#         "aList": [1, 2, 3],
-#         "nested": {
-#             "key": "value"
-#         }
-#     }
-#     return jsonify(data)
+@app.route('/api/results')
+def results():
+    with db.get_db_cursor() as cur:
+        cur.execute("SELECT row_to_json(person) FROM person;")
+        data = [record for record in cur]
+    #     cur.execute("SELECT * FROM person;")
+    #     names = [record["name"] for record in cur]
+    #     colors = [record["color"] for record in cur]
+    #     moods = [record["music"] for record in cur]
+    #     breeds = [record["breed"] for record in cur]
+    #     all_terms = [record["terms"] for record in cur]
+    # data = {
+    #     ""
+    # }
+
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run()
