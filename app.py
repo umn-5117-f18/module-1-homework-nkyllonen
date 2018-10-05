@@ -37,6 +37,7 @@ def thanks():
 def people():
     app.logger.info(f"called people function")
     if request.method == 'POST':
+        #gather each item from the form into local variables
         name = request.form['name']
         app.logger.info(f"got a name: {name}")
 
@@ -53,31 +54,26 @@ def people():
         app.logger.info(f"got a terms: {terms}")
 
         with db.get_db_cursor(commit=True) as cur:
-            dt = datetime.now()
+            dt = datetime.now() #get the current timestamp
             cur.execute("INSERT INTO person (name, color, music, breed, terms, time_stamp) VALUES (%s,%s,%s,%s,%s,%s)", (name, color, music, breed, terms, dt))
 
-        return render_template("thanks.html")
-    else:
-        with db.get_db_cursor() as cur:
-            cur.execute("SELECT * FROM person;")
-            names = [record["name"] for record in cur]
-
-        return render_template("thanks.html")
+        return thanks()
 
 @app.route('/api/results')
 def results():
+    #check for ?reverse=___ in query parameters
+    query = request.args.get('reverse')
+
     with db.get_db_cursor() as cur:
+        #gather all rows into an array of arrays
+        #(each item is an array holding all the col values or that row)
         cur.execute("SELECT row_to_json(person) FROM person;")
-        data = [record for record in cur]
-    #     cur.execute("SELECT * FROM person;")
-    #     names = [record["name"] for record in cur]
-    #     colors = [record["color"] for record in cur]
-    #     moods = [record["music"] for record in cur]
-    #     breeds = [record["breed"] for record in cur]
-    #     all_terms = [record["terms"] for record in cur]
-    # data = {
-    #     ""
-    # }
+        data = [record for record in cur] #sorted by entering timestamp
+
+    if query:
+        #reverse data to be sorted in descending timestamp order
+        app.logger.info(f"query: {query}")
+        data.reverse();
 
     return jsonify(data)
 
