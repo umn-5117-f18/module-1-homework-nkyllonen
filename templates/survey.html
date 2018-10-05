@@ -14,93 +14,76 @@
         </p>
       </div>
 </div>
+<div class="content-wrapper">
+<div class="content">
 
-<div class = "content-wrapper">
-  <div class="content">
+<form name="form-radios" method="post" action="/people">
 
-      <form class="pure-form pure-g" method="post" action="/people">
-      <fieldset>
-          <div class="pure-u-1-4">
-
-              <label for="name-input">Name (first last)</label>
-              <input class="pure-input-1" id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
-
-              <label for="color-input">Favorite Color</label>
-              <input class="pure-input-1" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
-
-              <label for="mood-input">Favorite Mood of Music</label>
-              <select id="mood-input" name="mood">
-                  <option name="mood">dance</option>
-                  <option name="mood">happy</option>
-                  <option name="mood">slow</option>
-                  <option name="mood">sad</option>
-                  <option name="mood">warm</option>
-              </select>
-
-          </div>
-
-      </fieldset>
-
-      <!-- needs to be within the <form> section -->
-      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
-
-      </form>
-
-      <form method="post" action="/people">
+  <!-- <fieldset> -->
+      <div class="pure-u-1-4">
       <div class="field-box">
-      <p><label class="mylabel" for="breed-radios">Favorite Dog Breed:</label></p>
-
-          <div class="checkbox">
-          <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
-          <label for="AS" class="pure-radio">
-            Australian Shepherd
-          </label>
-          </div>
-
-          <div class="checkbox">
-          <input type="radio" id="GS" name="breed-radios" value="German Shepherd" />
-          <label for="GS" class="pure-radio">
-            German Shepherd
-          </label>
-          </div>
-
-          <div class="checkbox">
-          <input type="radio" id="GR" name="breed-radios" value="Golden Retriever" />
-          <label for="GR" class="pure-radio">
-            Golden Retriever
-          </label>
-          </div>
+          <label class="mylabel" for="name-input">Name (first last)</label>
+          <input class="myinput" id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
       </div>
 
-        <div class="field-box">
-          <div class="checkbox">
-          <input type="checkbox" id="terms" name="term-checkbox" value="terms" required/>
-          <label for="terms" class="pure-checkbox">
-            I understand that there are no terms and conditions to this survey.
-            <p></p>
-          </label>
-          <textarea placeholder="Enter a few of your own terms and conditions!"></textarea>
-          </div>
-        </div>
+      <div class="field-box">
+          <label class="mylabel" for="color-input">Favorite Color</label>
+          <input class="myinput" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
+      </div>
 
-      </form>
+      <div class="field-box">
+          <label class="mylabel" for="mood-input">Favorite Mood of Music</label>
+          <select id="mood-input" name="mood">
+              <option name="mood">dance</option>
+              <option name="mood">happy</option>
+              <option name="mood">slow</option>
+              <option name="mood">sad</option>
+              <option name="mood">warm</option>
+          </select>
+      </div>
+      </div>
 
-      <!-- <form>
-        <div class="field-box">
-        <input class="conditional_form_part_activator" type="checkbox" id="terms" name="term-checkbox" value="terms" required>
-          I understand that there are no terms and conditions to this survey.
+  <!-- </fieldset> -->
 
-        <div class="conditional_form_part">
-            <textarea class="pure-input-1-2" placeholder="Enter a few of your own terms and conditions"></textarea>
-        </div>
-        </div>
-      </form> -->
+<div class="field-box">
+<p><label class="mylabel" for="breed-radios">Favorite Dog Breed:</label></p>
 
-      <!-- <a href="{{ url_for('thanks') }}" type="submit" class="pure-button">Submit Survey</a> -->
-      <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
+    <div class="checkbox">
+    <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
+    <label for="AS" class="pure-radio">
+      Australian Shepherd
+    </label>
+    </div>
 
+    <div class="checkbox">
+    <input type="radio" id="GS" name="breed-radios" value="German Shepherd" />
+    <label for="GS" class="pure-radio">
+      German Shepherd
+    </label>
+    </div>
 
+    <div class="checkbox">
+    <input type="radio" id="GR" name="breed-radios" value="Golden Retriever" />
+    <label for="GR" class="pure-radio">
+      Golden Retriever
+    </label>
     </div>
 </div>
 
+  <div class="field-box">
+    <div class="checkbox">
+    <input type="checkbox" id="terms" name="term-checkbox" value="terms" required/>
+    <label for="terms" class="pure-checkbox">
+      I understand that there are no terms and conditions to this survey.
+      <p></p>
+    </label>
+    <textarea name="term-textarea" placeholder="Enter a few of your own terms and conditions!"></textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
+
+</form>
+</div>
+</div>
 {% endblock %}

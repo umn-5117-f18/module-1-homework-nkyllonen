@@ -37,12 +37,21 @@ def people():
     if request.method == 'POST':
         name = request.form['name']
         app.logger.info(f"got a name: {name}")
+
         color = request.form['color']
         app.logger.info(f"got a color: {color}")
-        mood = request.form['mood']
-        app.logger.info(f"got a mood: {mood}")
+
+        music = request.form['mood']
+        app.logger.info(f"got a music mood: {music}")
+
+        breed = request.form['breed-radios']
+        app.logger.info(f"got a breed: {breed}")
+
+        terms = request.form['term-textarea']
+        app.logger.info(f"got a terms: {terms}")
+
         with db.get_db_cursor(commit=True) as cur:
-            cur.execute("insert into person (name, color, mood) values (%s,%s,%s)", (name, color, mood))
+            cur.execute("insert into person (name, color, music, breed, terms) values (%s,%s,%s,%s,%s)", (name, color, music, breed, terms))
         return render_template("thanks.html")
     else:
         with db.get_db_cursor() as cur:
