@@ -1,25 +1,3 @@
-/*
-From this site:
-https://medium.com/claritydesignsystem/pure-css-accessible-checkboxes-and-radios-buttons-54063e759bb3
- */
-
-.checkbox label {
-    position: relative;
-}
-.checkbox label::before,
-.checkbox label::after {
-    position: absolute;
-}
-/*Outer-box*/
-.checkbox label::before {
-    top: 3px;
-}
-/*Checkmark*/
-.checkbox label::after {
-    left: 4px;
-    top: 7px;
-}
-
 /*----------------------------------------------------------*/
 /* same as pure-form.label */
 .mylabel {
@@ -65,11 +43,11 @@ https://content.pivotal.io/blog/showing-and-hiding-conditional-html-without-java
 } */
 /*----------------------------------------------------------*/
 
-label + textarea {
+input + textarea {
     padding: 1em;
     opacity: 0.1;
     transition: 0.5s;
 }
-:checked + label + textarea {
+input[type=checkbox]:checked + textarea {
     opacity: 1;
 }

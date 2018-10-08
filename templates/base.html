@@ -18,6 +18,9 @@
   <!-- My CSS stylesheet -->
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 
+  <!-- import plugin script -->
+  <script src='../static/Chart.min.js'></script>
+
 </head>
 
 <header>
@@ -27,6 +30,7 @@
 
       <ul class="pure-menu-list">
           <li class="pure-menu-item"><a href="{{url_for('results')}}" class="pure-menu-link">Results</a></li>
+          <li class="pure-menu-item"><a href="{{url_for('summary')}}" class="pure-menu-link">Summary</a></li>
       </ul>
   </div>
 </header>

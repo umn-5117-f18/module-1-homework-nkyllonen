@@ -17,22 +17,22 @@
 <div class="content-wrapper">
 <div class="content">
 
-<form name="form-radios" method="post" action="/people">
+<form class="pure-form pure-form-stacked" name="form-radios" method="post" action="/people">
 
   <!-- <fieldset> -->
       <div class="pure-u-1-4">
-      <div class="field-box">
-          <label class="mylabel" for="name-input">Name (first last)</label>
-          <input class="myinput" id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
-      </div>
+      <!-- <div class="field-box"> -->
+          <label for="name-input">Name (first last)</label>
+          <input id="name-input" name="name" type="text" placeholder="Your name" required minlength="3">
+      <!-- </div> -->
 
-      <div class="field-box">
-          <label class="mylabel" for="color-input">Favorite Color</label>
+      <!-- <div class="field-box"> -->
+          <label for="color-input">Favorite Color</label>
           <input class="myinput" id="color-input" name="color" type="text" placeholder="Color" required minlength="3">
-      </div>
+      <!-- </div> -->
 
-      <div class="field-box">
-          <label class="mylabel" for="mood-input">Favorite Mood of Music</label>
+      <!-- <div class="field-box"> -->
+          <label for="mood-input">Favorite Mood of Music</label>
           <select id="mood-input" name="mood">
               <option name="mood">dance</option>
               <option name="mood">happy</option>
@@ -40,46 +40,47 @@
               <option name="mood">sad</option>
               <option name="mood">warm</option>
           </select>
-      </div>
+      <!-- </div> -->
       </div>
 
   <!-- </fieldset> -->
 
-<div class="field-box">
-<p><label class="mylabel" for="breed-radios">Favorite Dog Breed:</label></p>
+<!-- <div class="field-box"> -->
+<p><label for="breed-radios">Favorite Dog Breed:</label></p>
 
-    <div class="checkbox">
-    <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
+    <!-- <div class="checkbox"> -->
     <label for="AS" class="pure-radio">
+      <input type="radio" id="AS" name="breed-radios" value="Australian Shepherd" checked />
       Australian Shepherd
     </label>
-    </div>
+    <!-- </div> -->
 
-    <div class="checkbox">
-    <input type="radio" id="GS" name="breed-radios" value="German Shepherd" />
+    <!-- <div class="checkbox"> -->
     <label for="GS" class="pure-radio">
+      <input type="radio" id="GS" name="breed-radios" value="German Shepherd" />
       German Shepherd
     </label>
-    </div>
+    <!-- </div> -->
 
-    <div class="checkbox">
-    <input type="radio" id="GR" name="breed-radios" value="Golden Retriever" />
+    <!-- <div class="checkbox"> -->
     <label for="GR" class="pure-radio">
+      <input type="radio" id="GR" name="breed-radios" value="Golden Retriever" />
       Golden Retriever
     </label>
-    </div>
-</div>
+    <!-- </div> -->
+<!-- </div> -->
 
-  <div class="field-box">
-    <div class="checkbox">
-    <input type="checkbox" id="terms" name="term-checkbox" value="terms" required/>
+  <!-- <div class="field-box"> -->
+    <!-- <div class="checkbox"> -->
+  <fieldset >
     <label for="terms" class="pure-checkbox">
+    <input type="checkbox" id="terms" name="term-checkbox" value="terms" required/>
       I understand that there are no terms and conditions to this survey.
-      <p></p>
-    </label>
     <textarea name="term-textarea" placeholder="Enter a few of your own terms and conditions!"></textarea>
-    </div>
-  </div>
+    </label>
+    <!-- </div> -->
+  <!-- </div> -->
+  </fieldset>
 
   <button type="submit" class="pure-button pure-button-primary">Submit Survey</button>
 

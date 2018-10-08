@@ -77,5 +77,14 @@ def results():
 
     return jsonify(data)
 
+@app.route('/admin/summary')
+def summary():
+    # json_arr = results()
+    # return render_template("summary.html", data=json_arr)
+
+    labels = ["January","February","March","April","May","June","July","August"]
+    values = [10,9,8,7,6,4,7,8]
+    return render_template('summary.html', values=values, labels=labels)
+
 if __name__ == '__main__':
     app.run()

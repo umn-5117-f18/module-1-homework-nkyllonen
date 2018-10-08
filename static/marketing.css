@@ -61,7 +61,7 @@ label {
     border: 2px solid #ddd;
     box-shadow: none;
     font-size: 100%;
-    width: 100%;
+    /* width: 100%; //this messes up radio and checkboxes  */
     margin-bottom: 1em;
 }
 
