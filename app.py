@@ -92,11 +92,12 @@ def summary():
     breed_labels = ["Australian Shepherd", "German Shepherd", "Golden Retriever"]
 
     #parse data from requests into dictionaries
-    mood_data, breed_data = getData(data)
+    mood_data, breed_data, color_data, terms_data = getData(data)
 
     return render_template("summary.html",
         mood_data=mood_data, mood_labels=mood_labels,
-        breed_data=breed_data, breed_labels=breed_labels)
+        breed_data=breed_data, breed_labels=breed_labels,
+        color_data=color_data, terms_data=terms_data)
 
 def getData(arr):
     #store votes/values in dictionary!
@@ -114,12 +115,18 @@ def getData(arr):
         "Golden Retriever" : 0
     }
 
+    color_data = []
+    terms_data = []
+
     #tally up votes for mood_data and breed_data
     for i in range (len(arr)):
         mood_data[arr[i][0]['music']] += 1
         breed_data[arr[i][0]['breed']] += 1
+        app.logger.info(f"arr[i][0]['color']: {arr[i][0]['color']}")
+        color_data.append(arr[i][0]['color'].lower()) #need to append otherwise
+        terms_data.append(arr[i][0]['terms'].lower()) #will get split into chars
 
-    return mood_data, breed_data
+    return mood_data, breed_data, color_data, terms_data
 
 if __name__ == '__main__':
     app.run()
