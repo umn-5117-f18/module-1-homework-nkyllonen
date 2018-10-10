@@ -14,6 +14,8 @@
 
 <div class="content-wrapper">
 <div class="content">
+<h2>Submission Timestamps</h2>
+<canvas id="time-chart" width="600" height="300"></canvas>
 
 <h2>Free Responses</h2>
 <table class="pure-table">
@@ -21,6 +23,7 @@
         <tr>
             <th>Colors</th>
             <th>Terms</th>
+            <!-- <th>Times</th> -->
         </tr>
     </thead>
     <tbody>
@@ -28,6 +31,7 @@
         <tr>
           <td> {{color_data[i]}} </td>
           <td> {{terms_data[i]}} </td>
+          <!-- <td> {{time_data[i]}} </td> -->
         </tr>
       {% endfor %}
     </tbody>
@@ -43,12 +47,64 @@
 
 <script>
    //---------------------//
+   //timestamp chart
+   //largely inspired by:
+   //http://www.chartjs.org/samples/latest/scales/time/financial.html
+   //---------------------//
+   var timeLineData = {
+    labels : [{% for item in time_data %}
+                   "{{item}}",
+               {% endfor %}],
+    datasets : [
+       {
+             fillColor: "rgba(151,187,205,0.2)",
+             strokeColor: "rgba(151,187,205,1)",
+             pointColor: "rgba(151,187,205,1)",
+             pointStrokeColor: "#fff",
+             pointHighlightFill: "#fff",
+             pointHighlightStroke: "rgba(151,187,205,1)",
+             bezierCurve : false,
+             data : [{% for item in time_data %}
+                       {{time_data[item]}},
+                     {% endfor %}]
+       }]
+    }
+
+     Chart.defaults.global.animationSteps = 50;
+     Chart.defaults.global.tooltipYPadding = 16;
+     Chart.defaults.global.tooltipCornerRadius = 0;
+     Chart.defaults.global.tooltipTitleFontStyle = "normal";
+     Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+     Chart.defaults.global.animationEasing = "easeOutBounce";
+     Chart.defaults.global.responsive = false;
+     Chart.defaults.global.scaleLineColor = "black";
+     Chart.defaults.global.scaleFontSize = 16;
+
+    // get bar chart canvas
+    var timeChart = document.getElementById("time-chart").getContext("2d");
+
+    steps = 10
+    max = 10
+    // draw bar chart
+    var LineChartDemo = new Chart(timeChart).Line(timeLineData, {
+         scaleOverride: true,
+         scaleSteps: steps,
+         scaleStepWidth: Math.ceil(max / steps),
+         scaleStartValue: 0,
+         scaleShowVerticalLines: true,
+         scaleShowGridLines : true,
+         barShowStroke : true,
+         scaleShowLabels: true,
+         bezierCurve: false
+    });
+
+   //---------------------//
    //music mood bar chart
    //largely inspired by:
    //https://pythonspot.com/flask-and-great-looking-charts-using-chart-js/
    //---------------------//
    var moodBarData = {
-   labels : [{% for item in mood_labels %}
+   labels : [{% for item in mood_data %}
                   "{{item}}",
               {% endfor %}],
    datasets : [
@@ -86,7 +142,7 @@
    //https://pythonspot.com/flask-and-great-looking-charts-using-chart-js/
    //---------------------//
    var breedBarData = {
-   labels : [{% for item in breed_labels %}
+   labels : [{% for item in breed_data %}
                   "{{item}}",
               {% endfor %}],
    datasets : [

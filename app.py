@@ -88,25 +88,24 @@ def summary():
         cur.execute("SELECT row_to_json(person) FROM person;")
         data = [record for record in cur] #sorted by entering timestamp
 
-    mood_labels = ["Dance", "Happy", "Slow", "Sad", "Warm"]
-    breed_labels = ["Australian Shepherd", "German Shepherd", "Golden Retriever"]
-
     #parse data from requests into dictionaries
-    mood_data, breed_data, color_data, terms_data = getData(data)
+    mood_data, breed_data, color_data, terms_data, time_data = getData(data)
+
+    app.logger.info(f"time_data: {time_data}")
 
     return render_template("summary.html",
-        mood_data=mood_data, mood_labels=mood_labels,
-        breed_data=breed_data, breed_labels=breed_labels,
-        color_data=color_data, terms_data=terms_data)
+        mood_data=mood_data, breed_data=breed_data,
+        color_data=color_data, terms_data=terms_data,
+        time_data=time_data)
 
 def getData(arr):
     #store votes/values in dictionary!
     mood_data = {
-        "dance" : 0,
-        "happy" : 0,
-        "slow" : 0,
-        "sad" : 0,
-        "warm" : 0
+        "Dance" : 0,
+        "Happy" : 0,
+        "Slow" : 0,
+        "Sad" : 0,
+        "Warm" : 0
     }
 
     breed_data = {
@@ -117,16 +116,25 @@ def getData(arr):
 
     color_data = []
     terms_data = []
+    time_data = {}
 
-    #tally up votes for mood_data and breed_data
     for i in range (len(arr)):
-        mood_data[arr[i][0]['music']] += 1
+        #tally up votes for mood_data and breed_data
+        mood_data[arr[i][0]['music'].capitalize()] += 1
         breed_data[arr[i][0]['breed']] += 1
-        app.logger.info(f"arr[i][0]['color']: {arr[i][0]['color']}")
+
+        #append lowercase strings for free responses
         color_data.append(arr[i][0]['color'].lower()) #need to append otherwise
         terms_data.append(arr[i][0]['terms'].lower()) #will get split into chars
 
-    return mood_data, breed_data, color_data, terms_data
+        #build dict of timestamp data
+        t = arr[i][0]['time_stamp'].split()[0] #just grab the YYYY-MM-DD
+        if t in time_data:
+            time_data[t] += 1 #tally if we already added this day
+        else:
+            time_data[t] = 1  #create a new key in the dict
+
+    return mood_data, breed_data, color_data, terms_data, time_data
 
 if __name__ == '__main__':
     app.run()

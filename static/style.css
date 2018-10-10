@@ -51,3 +51,19 @@ input + textarea {
 input[type=checkbox]:checked + textarea {
     opacity: 1;
 }
+
+/*
+* from given timestamp example:
+* http://www.chartjs.org/samples/latest/scales/time/financial.html
+*/
+/* .chartjs-size-monitor {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: -1;
+  } */
