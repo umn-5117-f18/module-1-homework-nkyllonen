@@ -11,11 +11,11 @@ Please fill out all of the following sections to help us grade your submission:
 
 ## Link to Site
 
-<https://murmuring-gorge-52338.herokuapp.com/>
+https://murmuring-gorge-52338.herokuapp.com/
 
 ## Challenge Task
 
-* I started the challenge task: [yes/no]
-* I completed the challenge task: [yes/no]
+* I started the challenge task: [yes/no] YES
+* I completed the challenge task: [yes/no] YES
 
-(if applicable) link: <https://TODO.herokuapp.com/admin/summary>
+link: https://murmuring-gorge-52338.herokuapp.com/admin/summary
