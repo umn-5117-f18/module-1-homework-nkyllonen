@@ -91,9 +91,8 @@ def summary():
     mood_labels = ["Dance", "Happy", "Slow", "Sad", "Warm"]
     breed_labels = ["Australian Shepherd", "German Shepherd", "Golden Retriever"]
 
+    #parse data from requests into dictionaries
     mood_data, breed_data = getData(data)
-
-    # app.logger.info(f"mood_data dictionary: {mood_data}")
 
     return render_template("summary.html",
         mood_data=mood_data, mood_labels=mood_labels,
@@ -110,16 +109,15 @@ def getData(arr):
     }
 
     breed_data = {
-        "dance" : 0,
-        "happy" : 0,
-        "slow" : 0,
-        "sad" : 0,
-        "warm" : 0
+        "Australian Shepherd" : 0,
+        "German Shepherd" : 0,
+        "Golden Retriever" : 0
     }
 
+    #tally up votes for mood_data and breed_data
     for i in range (len(arr)):
-        #check mood value
         mood_data[arr[i][0]['music']] += 1
+        breed_data[arr[i][0]['breed']] += 1
 
     return mood_data, breed_data
 

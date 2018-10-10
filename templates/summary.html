@@ -15,14 +15,19 @@
 <div class="content-wrapper">
 <div class="content">
 
-<!-- TODO: do something with the json array 'data' -->
-
 <h2>Favorite Mood of Music </h2>
 <!-- bar chart canvas element -->
-<canvas id="chart" width="600" height="400"></canvas>
+<canvas id="music-chart" width="600" height="400"></canvas>
+
+<h2>Favorite Dog Breed</h2>
+<!-- bar chart canvas element -->
+<canvas id="breed-chart" width="600" height="400"></canvas>
+
 <script>
+   //---------------------//
    //music mood bar chart
-   var barData = {
+   //---------------------//
+   var moodBarData = {
    labels : [{% for item in mood_labels %}
                   "{{item}}",
               {% endfor %}],
@@ -32,19 +37,55 @@
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
          data : [{% for item in mood_data %}
-                      {{mood_data[item]}},
+                      {{mood_data[item]}}, //item is the key in the dictionary
                     {% endfor %}]
       }
       ]
    }
 
    // get bar chart canvas
-   var mychart = document.getElementById("chart").getContext("2d");
+   var musicChart = document.getElementById("music-chart").getContext("2d");
 
    steps = 10
    max = 10
    // draw bar chart
-   new Chart(mychart).Bar(barData, {
+   new Chart(musicChart).Bar(moodBarData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+   
+   //---------------------//
+   //favorite breed bar chart
+   //---------------------//
+   var breedBarData = {
+   labels : [{% for item in breed_labels %}
+                  "{{item}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in breed_data %}
+                      {{breed_data[item]}}, //item is the key in the dictionary
+                    {% endfor %}]
+      }
+      ]
+   }
+
+   // get bar chart canvas
+   var breedChart = document.getElementById("breed-chart").getContext("2d");
+
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(breedChart).Bar(breedBarData, {
         scaleOverride: true,
         scaleSteps: steps,
         scaleStepWidth: Math.ceil(max / steps),
@@ -56,7 +97,6 @@
    });
 
 </script>
-
 
 </div>
 </div>
