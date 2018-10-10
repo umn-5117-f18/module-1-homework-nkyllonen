@@ -17,11 +17,13 @@
 
 <!-- TODO: do something with the json array 'data' -->
 
-<!-- bar chart canvas element --><canvas id="chart" width="600" height="400"></canvas>
+<h2>Favorite Mood of Music </h2>
+<!-- bar chart canvas element -->
+<canvas id="chart" width="600" height="400"></canvas>
 <script>
-   // bar chart data
+   //music mood bar chart
    var barData = {
-   labels : [{% for item in labels %}
+   labels : [{% for item in mood_labels %}
                   "{{item}}",
               {% endfor %}],
    datasets : [
@@ -29,8 +31,8 @@
             fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "rgba(151,187,205,1)",
             pointColor: "rgba(151,187,205,1)",
-         data : [{% for item in values %}
-                      {{item}},
+         data : [{% for item in mood_data %}
+                      {{mood_data[item]}},
                     {% endfor %}]
       }
       ]

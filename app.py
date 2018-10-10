@@ -4,6 +4,7 @@ from flask import Flask, jsonify, redirect, render_template, request, url_for
 
 import psycopg2
 from datetime import datetime
+import json
 
 import db
 
@@ -80,11 +81,47 @@ def results():
 @app.route('/admin/summary')
 def summary():
     # json_arr = results()
-    # return render_template("summary.html", data=json_arr)
 
-    labels = ["January","February","March","April","May","June","July","August"]
-    values = [10,9,8,7,6,4,7,8]
-    return render_template('summary.html', values=values, labels=labels)
+    with db.get_db_cursor() as cur:
+        #gather all rows into an array of arrays
+        #(each item is an array holding all the col values or that row)
+        cur.execute("SELECT row_to_json(person) FROM person;")
+        data = [record for record in cur] #sorted by entering timestamp
+
+    mood_labels = ["Dance", "Happy", "Slow", "Sad", "Warm"]
+    breed_labels = ["Australian Shepherd", "German Shepherd", "Golden Retriever"]
+
+    mood_data, breed_data = getData(data)
+
+    # app.logger.info(f"mood_data dictionary: {mood_data}")
+
+    return render_template("summary.html",
+        mood_data=mood_data, mood_labels=mood_labels,
+        breed_data=breed_data, breed_labels=breed_labels)
+
+def getData(arr):
+    #store votes/values in dictionary!
+    mood_data = {
+        "dance" : 0,
+        "happy" : 0,
+        "slow" : 0,
+        "sad" : 0,
+        "warm" : 0
+    }
+
+    breed_data = {
+        "dance" : 0,
+        "happy" : 0,
+        "slow" : 0,
+        "sad" : 0,
+        "warm" : 0
+    }
+
+    for i in range (len(arr)):
+        #check mood value
+        mood_data[arr[i][0]['music']] += 1
+
+    return mood_data, breed_data
 
 if __name__ == '__main__':
     app.run()
